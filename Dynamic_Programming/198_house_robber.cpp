@@ -21,4 +21,17 @@ class Solution {
         }
         return dp[nums.size()];
     }
+    // 方法二
+    int rob_v2(vector<int>& nums) {
+        if (0 == nums.size()) return 0;
+        if (1 == nums.size()) return nums[0];
+        // 考虑下标i（包括i）以内的房屋，最多可以偷窃的金额为dp[i]
+        vector<int> dp(nums.size());
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+        for (int i = 2; i < nums.size(); i++) {
+            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i]);
+        }
+        return dp[nums.size() - 1];
+    }
 };
