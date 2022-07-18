@@ -5,6 +5,7 @@
 #include <vector>
 using namespace std;
 
+// 全排列
 class Solution {
    private:
     vector<int> path;
